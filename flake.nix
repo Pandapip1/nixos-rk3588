@@ -86,10 +86,6 @@
           (name: board:
             nixpkgs.lib.nixosSystem {
               system = aarch64System; # native or qemu-emulated
-              specialArgs.rk3588 = {
-                inherit nixpkgs;
-                pkgsKernel = pkgsNative;
-              };
               modules = [
                 ./modules/configuration.nix
                 board.core
@@ -109,10 +105,6 @@
               (name + "-cross")
               (nixpkgs.lib.nixosSystem {
                 system = localSystem; # x64
-                specialArgs.rk3588 = {
-                  inherit nixpkgs;
-                  pkgsKernel = pkgsCross;
-                };
                 modules = [
                   ./modules/configuration.nix
                   board.core
@@ -135,13 +127,6 @@
               (name + "-uefi")
               (nixpkgs.lib.nixosSystem {
                 system = aarch64System; # native or qemu-emulated
-
-                specialArgs = {
-                  rk3588 = {
-                    inherit nixpkgs;
-                    pkgsKernel = pkgsNative;
-                  };
-                };
                 modules = [
                   board.core
                   ./modules/configuration.nix
