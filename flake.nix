@@ -161,6 +161,16 @@
         rawEfiImage-opi5plus = self.nixosConfigurations.orangepi5plus-uefi.config.system.build.raw;
         rawEfiImage-opi5pro = self.nixosConfigurations.orangepi5pro-uefi.config.system.build.raw;
         rawEfiImage-rock5a = self.nixosConfigurations.rock5a-uefi.config.system.build.raw;
+
+        # Vendor U-Boot
+        u-boot-opi5b = pkgs.callPackage ./pkgs/u-boot-opi5b {};
+        u-boot-opi5pro = pkgs.callPackage ./pkgs/u-boot-opi5pro {};
+        u-boot-radxa = pkgs.callPackage ./pkgs/u-boot-radxa {};
+
+        # Firmware
+        rkbin-rk3588 = pkgs.callPackage ./pkgs/rkbin-rk3588 {};
+        orangepi-firmware = pkgs.callPackage ./pkgs/orangepi-firmware {};
+        mali-firmware = pkgs.callPackage ./pkgs/mali-firmware {};
       };
 
       devShells.fhsEnv =
