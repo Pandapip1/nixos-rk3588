@@ -5,11 +5,6 @@
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
     flake-utils.url = "github:numtide/flake-utils";
 
-    nixos-generators = {
-      url = "github:nix-community/nixos-generators";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
     # For CI checks
     pre-commit-hooks = {
       url = "github:cachix/pre-commit-hooks.nix";
@@ -26,7 +21,6 @@
     { self
     , nixpkgs
     , flake-utils
-    , nixos-generators
     , pre-commit-hooks
     , ...
     }:
@@ -147,7 +141,6 @@
                     inherit nixpkgs;
                     pkgsKernel = pkgsNative;
                   };
-                  inherit nixos-generators;
                 };
                 modules = [
                   board.core
