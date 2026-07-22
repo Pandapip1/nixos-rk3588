@@ -80,13 +80,9 @@
           };
         };
 
-        formats = { config, ... }: {
-          imports = [
-            nixos-generators.nixosModules.all-formats
-          ];
-
+        formats = {
           nixpkgs.hostPlatform = aarch64System;
-          formatConfigs.rk3588-raw-efi = import ./modules/rk3588-raw-efi.nix;
+          imports = [./modules/rk3588-raw-efi.nix];
         };
       };
 
@@ -185,10 +181,10 @@
         sdImage-rock5a-cross = self.nixosConfigurations.rock5a-cross.config.system.build.sdImage;
 
         # UEFI raw image
-        rawEfiImage-opi5 = self.nixosConfigurations.orangepi5-uefi.config.formats.rk3588-raw-efi;
-        rawEfiImage-opi5plus = self.nixosConfigurations.orangepi5plus-uefi.config.formats.rk3588-raw-efi;
-        rawEfiImage-opi5pro = self.nixosConfigurations.orangepi5pro-uefi.config.formats.rk3588-raw-efi;
-        rawEfiImage-rock5a = self.nixosConfigurations.rock5a-uefi.config.formats.rk3588-raw-efi;
+        rawEfiImage-opi5 = self.nixosConfigurations.orangepi5-uefi.config.system.build.raw;
+        rawEfiImage-opi5plus = self.nixosConfigurations.orangepi5plus-uefi.config.system.build.raw;
+        rawEfiImage-opi5pro = self.nixosConfigurations.orangepi5pro-uefi.config.system.build.raw;
+        rawEfiImage-rock5a = self.nixosConfigurations.rock5a-uefi.config.system.build.raw;
       };
 
       devShells.fhsEnv =
