@@ -27,10 +27,8 @@
     let
       # Local system's architecture, the host you are running this flake on.
       localSystem = "x86_64-linux";
-      pkgsLocal = import nixpkgs { system = localSystem; };
       # The native system of the target SBC.
       aarch64System = "aarch64-linux";
-      pkgsNative = import nixpkgs { system = aarch64System; };
 
       # Cross-compilation toolchain for building on the local system.
       pkgsCross = import nixpkgs {
