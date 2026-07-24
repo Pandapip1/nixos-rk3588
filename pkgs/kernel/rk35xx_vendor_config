@@ -9588,4 +9588,10 @@ CONFIG_ARCH_USE_MEMTEST=y
 # Rust hacking
 #
 # end of Rust hacking
+
+# NixOS image generation via QEMU
+CONFIG_NET_9P=y
+CONFIG_NET_9P_VIRTIO=y
+CONFIG_9P_FS=y
+# end of NixOS image generation via QEMU
 # end of Kernel hacking
